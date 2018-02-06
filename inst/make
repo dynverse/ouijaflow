@@ -1,0 +1,11 @@
+#!/bin/bash
+install_dir="$1"
+if [ ! -d $install_dir ]; then
+  mkdir $install_dir
+  module load python/x86_64/3.5.1
+  virtualenv -p python3 $install_dir --system-site-packages
+  cd $install_dir
+  source bin/activate
+  pip install git+https://github.com/kieranrcampbell/ouijaflow.git --upgrade --upgrade-strategy only-if-needed
+  pip install google-cloud # something is wrong with the google namespace, but this seemingly useless install fixes it :p
+fi

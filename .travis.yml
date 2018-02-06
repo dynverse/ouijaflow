@@ -1,0 +1,12 @@
+language: r
+sudo: required
+dist: trusty
+bioc_required: true
+cache: packages
+warnings_are_errors: true
+env:
+  - R_MAX_NUM_DLLS=250
+install:
+  - R -e 'install.packages("devtools")'
+  - R -e 'setRepositories(ind = 1:2)'
+  - R -e 'devtools::install(dependencies = T, upgrade = T)'
