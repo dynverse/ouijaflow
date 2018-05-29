@@ -15,7 +15,4 @@ Imports:
   dplyr,
   purrr,
   tibble,
-  utils,
-  dynutils
-Remotes:
-  rcannood/dynutils
+  utils

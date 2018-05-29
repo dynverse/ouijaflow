@@ -10,7 +10,6 @@
 #' @importFrom purrr %>%
 #' @importFrom dplyr rename rename_if
 #' @importFrom utils write.table read.csv
-#' @importFrom dynutils run_until_exit
 #'
 #'
 #' @export
@@ -56,7 +55,7 @@ ouijaflow <- function(
       "python {find.package('ouijaflow')}/wrapper.py {temp_folder}",
       .sep = ";"
     )
-    output <- dynutils::run_until_exit(commands)
+    output <- processx::run("/bin/bash", c("-c", commands), echo=TRUE)
 
     # read output
     pseudotimes <- read_csv(paste0(temp_folder, "/pseudotimes.csv"), col_types=cols(col_double()), col_names=F)[[1]]
